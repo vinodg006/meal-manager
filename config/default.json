@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb://localhost:27017/meal-manager",
+  "jwtSecret": "mern_meal-manager_secret"
+}
