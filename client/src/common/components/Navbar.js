@@ -14,7 +14,7 @@ export default ({ user, logout }) => {
     <div>
       <Navbar color="dark" dark expand="sm" className="mb-5">
         <Container>
-          <NavbarBrand href="/">Meal Manager</NavbarBrand>
+          <NavbarBrand>Meal Manager</NavbarBrand>
           <Nav className="ml-auto" navbar>
             <NavItem>
               <span className="navbar-text mr-3">
