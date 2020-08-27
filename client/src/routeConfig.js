@@ -35,6 +35,13 @@ const routeConfig = [
     ),
     isExact: true,
   },
+  {
+    path: appRoutes.DASHBOARD,
+    component: LoadableComponent(() =>
+      import("./features/dashboard/DashboardContainer")
+    ),
+    isExact: true,
+  },
 ];
 
 export default routeConfig;

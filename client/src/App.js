@@ -3,6 +3,7 @@ import store from "./store";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import routeConfig from "./routeConfig";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 class App extends Component {

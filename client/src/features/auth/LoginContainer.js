@@ -34,6 +34,7 @@ class LoginContainer extends Component {
     if (isAuthenticated) {
       //Clear Errors
       this.props.clearErrors();
+      this.props.history.push("/dashboard");
     }
   }
 

@@ -4,7 +4,6 @@ import {
   Button,
   Form,
   FormGroup,
-  Label,
   Input,
   Alert,
   Container,
@@ -37,6 +36,7 @@ class RegisterContainer extends Component {
     if (isAuthenticated) {
       //Clear Errors
       this.props.clearErrors();
+      this.props.history.push("/dashboard");
     }
   }
 
