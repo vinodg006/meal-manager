@@ -40,7 +40,7 @@ const editItem = async (req, res) => {
 
 const getItems = async (req, res) => {
   try {
-    let items = Item.find({ user: await User.findById(req.user.id) });
+    let items = await Item.find({ user: await User.findById(req.user.id) });
     return res.json(items);
   } catch (e) {
     console.log(e);

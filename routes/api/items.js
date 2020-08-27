@@ -22,3 +22,5 @@ router.put("/:id", auth, itemController.editItem);
 //@desc     Delete an  Item
 //@access   Private
 router.delete("/:id", auth, itemController.deleteItem);
+
+module.exports = router;
