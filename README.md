@@ -5,7 +5,7 @@ A Full Stack web application built with MERN Stack.
 With this application you can keep track of your daily diet by managing meals with associated date and calories. You can visualize the data using table in the front end.
 
 
-This application uses ExpressJS framework for the backend apis and ReactJS for front-end views. The Data is stored with NoSQL database using MongoDB/mongoose.
+This application uses ExpressJS framework for the backend REST APIs (authenticated) and ReactJS for front-end views. The Data is stored with NoSQL database using MongoDB/mongoose.
 
 ## Glimpse of UI
 
