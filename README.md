@@ -9,6 +9,8 @@ This application uses ExpressJS framework for the backend apis and ReactJS for f
 
 ## Glimpse of UI
 
+![GIF](../master/screenshots/meal_manager.gif)
+
 **Login:**
 ![Screenshot](../master/screenshots/Login.png)
 
