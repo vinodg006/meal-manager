@@ -10,6 +10,7 @@ import {
 } from "./types";
 import axios from "axios";
 import { returnErrors } from "./errorActions";
+import apiRoutes from "../common/constants/apiRoutes";
 
 //Check token and load user
 
@@ -18,7 +19,7 @@ export const loadUser = () => (dispatch, getState) => {
   dispatch({ type: USER_LOADING });
 
   axios
-    .get("api/auth/user", tokenConfig(getState))
+    .get(apiRoutes.USER_DETAILS, tokenConfig(getState))
     .then((res) => dispatch({ type: USER_LOADED, payload: res.data }))
     .catch((err) => {
       dispatch(returnErrors(err.response.data, err.response.status));
@@ -39,7 +40,7 @@ export const register = ({ name, email, password }) => (dispatch) => {
   const body = JSON.stringify({ name, email, password });
 
   axios
-    .post("api/users", body, config)
+    .post(apiRoutes.REGISTER, body, config)
     .then((res) => dispatch({ type: REGISTER_SUCCESS, payload: res.data }))
     .catch((err) => {
       dispatch(
@@ -64,7 +65,7 @@ export const login = ({ email, password }) => (dispatch) => {
   const body = JSON.stringify({ email, password });
 
   axios
-    .post("api/auth", body, config)
+    .post(apiRoutes.LOGIN, body, config)
     .then((res) => dispatch({ type: LOGIN_SUCCESS, payload: res.data }))
     .catch((err) => {
       dispatch(

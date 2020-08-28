@@ -8,11 +8,12 @@ import {
 } from "./types";
 import { tokenConfig } from "./authActions";
 import { returnErrors } from "./errorActions";
+import apiRoutes from "../common/constants/apiRoutes";
 
 export const getItems = () => (dispatch, getState) => {
   dispatch(setItemsLoading());
   axios
-    .get("/api/items", tokenConfig(getState))
+    .get(apiRoutes.ITEM, tokenConfig(getState))
     .then((res) =>
       dispatch({
         type: GET_ITEMS,
@@ -26,7 +27,7 @@ export const getItems = () => (dispatch, getState) => {
 
 export const addItem = (item) => (dispatch, getState) => {
   axios
-    .post("/api/items", item, tokenConfig(getState))
+    .post(apiRoutes.ITEM, item, tokenConfig(getState))
     .then((res) =>
       dispatch({
         type: ADD_ITEM,
@@ -40,7 +41,7 @@ export const addItem = (item) => (dispatch, getState) => {
 
 export const deleteItem = (id) => (dispatch, getState) => {
   axios
-    .delete(`/api/items/${id}`, tokenConfig(getState))
+    .delete(`${apiRoutes.ITEM}/${id}`, tokenConfig(getState))
     .then((res) =>
       dispatch({
         type: DELETE_ITEM,
@@ -54,7 +55,7 @@ export const deleteItem = (id) => (dispatch, getState) => {
 
 export const editItem = (id, updatedData) => (dispatch, getState) => {
   axios
-    .put(`/api/items/${id}`, updatedData, tokenConfig(getState))
+    .put(`${apiRoutes.ITEM}/${id}`, updatedData, tokenConfig(getState))
     .then((res) =>
       dispatch({
         type: EDIT_ITEM,

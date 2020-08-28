@@ -1,7 +1,10 @@
 import React, { Fragment, useState, useEffect } from "react";
 import MaterialTable from "material-table";
 import AddMealModal from "./AddMealModal";
-import { presentableItems } from "../../../common/utils/appUtils";
+import {
+  presentableItems,
+  getFormattedDate,
+} from "../../../common/utils/appUtils";
 
 export default ({ items, deleteItem, addItem, editItem }) => {
   const [data, setData] = useState([]);
@@ -17,9 +20,9 @@ export default ({ items, deleteItem, addItem, editItem }) => {
         </Fragment>
       }
       columns={[
-        { title: "Date", field: "date" },
+        { title: "Date", field: "date", type: "date" },
         { title: "Meal", field: "name" },
-        { title: "Calories", field: "calories" },
+        { title: "Calories", field: "calories", type: "numeric" },
       ]}
       data={data}
       options={{
@@ -28,9 +31,9 @@ export default ({ items, deleteItem, addItem, editItem }) => {
           backgroundColor: "#01579b",
           color: "#FFF",
         },
-        rowStyle: {
-          backgroundColor: "#EEE",
-        },
+        rowStyle: (rowData) => ({
+          backgroundColor: rowData.calCount < 2000 ? "green" : "red",
+        }),
       }}
       style={{
         position: "relative",
@@ -46,6 +49,9 @@ export default ({ items, deleteItem, addItem, editItem }) => {
             setTimeout(() => {
               resolve();
               if (oldData) {
+                if (typeof newData.date == "object")
+                  newData.date = getFormattedDate(newData.date.toISOString());
+
                 editItem(oldData._id, newData);
               }
             }, 300);
