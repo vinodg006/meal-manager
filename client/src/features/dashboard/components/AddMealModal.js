@@ -26,18 +26,18 @@ export default ({ addItem }) => {
   const classes = useStyles();
   const [modal, openModal] = useState(false);
   const [meal, setMeal] = useState("");
-  const [calories, setCalories] = useState(0);
+  const [calories, setCalories] = useState(undefined);
   const [date, setDate] = useState(getFormattedDate(new Date().toISOString()));
 
   const resetForm = () => {
     setMeal("");
-    setCalories(0);
+    setCalories(undefined);
     setDate(getFormattedDate(new Date().toISOString()));
   };
 
   const handleCancel = () => {
-    openModal(false);
     resetForm();
+    openModal(false);
   };
 
   const handleSubmit = () => {
@@ -97,6 +97,7 @@ export default ({ addItem }) => {
               <OutlinedInput
                 id="outlined-adornment-amount"
                 value={calories}
+                type="number"
                 onChange={(e) => setCalories(e.target.value)}
                 endAdornment={
                   <InputAdornment position="end">Cal</InputAdornment>
@@ -113,7 +114,7 @@ export default ({ addItem }) => {
           <Button
             onClick={handleSubmit}
             color="primary"
-            disabled={meal.replace(/\s/g, "") === ""}
+            disabled={meal.replace(/\s/g, "") === "" || !calories}
           >
             Add Meal
           </Button>

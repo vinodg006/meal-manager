@@ -42,7 +42,6 @@ const validateToken = (req, res) => {
 };
 
 const validateUser = (req, res) => {
-  // console.log('req',req)
   User.findById(req.user.id)
     .select("-password")
     .then((user) => res.json(user));

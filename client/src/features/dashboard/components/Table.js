@@ -5,13 +5,38 @@ import {
   presentableItems,
   getFormattedDate,
 } from "../../../common/utils/appUtils";
+import appConstants from "../../../common/constants/appConstants";
 
 export default ({ items, deleteItem, addItem, editItem }) => {
   const [data, setData] = useState([]);
+
   useEffect(() => {
     setData(presentableItems(items));
   }, [items]);
+
+  const onRowUpdate = (newData, oldData) =>
+    new Promise((resolve) => {
+      setTimeout(() => {
+        resolve();
+        if (oldData) {
+          if (typeof newData.date == "object")
+            newData.date = getFormattedDate(newData.date.toISOString());
+
+          editItem(oldData._id, newData);
+        }
+      }, 300);
+    });
+
+  const onRowDelete = (oldData) =>
+    new Promise((resolve) => {
+      setTimeout(() => {
+        deleteItem(oldData._id);
+        resolve();
+      }, 300);
+    });
+
   return (
+    //https://github.com/mbrn/material-table/pull/2369
     <MaterialTable
       title={
         <Fragment>
@@ -32,7 +57,10 @@ export default ({ items, deleteItem, addItem, editItem }) => {
           color: "#FFF",
         },
         rowStyle: (rowData) => ({
-          backgroundColor: rowData.calCount < 2000 ? "green" : "red",
+          backgroundColor:
+            rowData.calCount < appConstants.CALORIES_THRESHOLD
+              ? "green"
+              : "red",
         }),
       }}
       style={{
@@ -44,25 +72,8 @@ export default ({ items, deleteItem, addItem, editItem }) => {
         opacity: 0.9,
       }}
       editable={{
-        onRowUpdate: (newData, oldData) =>
-          new Promise((resolve) => {
-            setTimeout(() => {
-              resolve();
-              if (oldData) {
-                if (typeof newData.date == "object")
-                  newData.date = getFormattedDate(newData.date.toISOString());
-
-                editItem(oldData._id, newData);
-              }
-            }, 300);
-          }),
-        onRowDelete: (oldData) =>
-          new Promise((resolve) => {
-            setTimeout(() => {
-              deleteItem(oldData._id);
-              resolve();
-            }, 300);
-          }),
+        onRowUpdate,
+        onRowDelete,
       }}
     />
   );

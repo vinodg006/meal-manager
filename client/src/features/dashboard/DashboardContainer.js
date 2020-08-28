@@ -47,7 +47,6 @@ class DashboardContainer extends Component {
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
-  error: state.error,
   items: state.item.items,
 });
 

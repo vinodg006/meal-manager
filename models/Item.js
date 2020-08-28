@@ -13,7 +13,7 @@ const ItemSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  calories: Number,
+  calories: { type: Number, default: 0 },
 });
 
 module.exports = Item = mongoose.model("item", ItemSchema);
