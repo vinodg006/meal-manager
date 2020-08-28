@@ -7,6 +7,26 @@ With this application you can keep track of your daily diet by managing meals wi
 
 This application uses ExpressJS framework for the backend apis and ReactJS for front-end views. The Data is stored with NoSQL database using MongoDB/mongoose.
 
+## Glimpse of UI
+
+**Login:**
+![Screenshot](../master/screenshots/Login.png)
+
+**Register:**
+![Screenshot](../master/screenshots/Register.png)
+
+**Dashboard:**
+![Screenshot](../master/screenshots/Dashboard.png)
+
+**Add Meal:**
+![Screenshot](../master/screenshots/Addmeal.png)
+
+**Edit Meal:**
+![Screenshot](../master/screenshots/EditMeal.png)
+
+**Delete Meal:**
+![Screenshot](../master/screenshots/DeleteMeal.png)
+
 ## Installation
 
 Use npm to install meal-manager.
